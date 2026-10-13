@@ -1,5 +1,5 @@
 /* Personal configuration: enter your public Telegram username without @. */
-const TELEGRAM_USERNAME = ""; // Example: "your_username"
+const TELEGRAM_USERNAME = "@CosmoS_Tgg"; // Example: "your_username"
 
 const menuButton = document.querySelector(".menu-toggle");
 const nav = document.querySelector("#site-nav");
