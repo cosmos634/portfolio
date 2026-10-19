@@ -58,3 +58,21 @@ if (!reduceMotion && "IntersectionObserver" in window) {
   }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
   revealTargets.forEach((element) => observer.observe(element));
 }
+
+// Lightweight scroll progress indicator (passive listener + one update per frame).
+const scrollProgress = document.querySelector("#scroll-progress");
+if (scrollProgress) {
+  let progressFramePending = false;
+  const updateScrollProgress = () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+    scrollProgress.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+    progressFramePending = false;
+  };
+  window.addEventListener("scroll", () => {
+    if (progressFramePending) return;
+    progressFramePending = true;
+    window.requestAnimationFrame(updateScrollProgress);
+  }, { passive: true });
+  updateScrollProgress();
+}
