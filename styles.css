@@ -169,3 +169,7 @@ a,button{-webkit-tap-highlight-color:transparent}
 @media(prefers-reduced-motion:reduce) {
   *, *::before, *::after { animation:none !important; transition:none !important; }
 }
+
+
+/* Keep all motion limited to the opacity-only reveal transition above. */
+*, *::before, *::after { animation: none !important; }
